@@ -1,8 +1,9 @@
 import React from 'react';
 // import { Route } from 'react-router-dom';
+import App from './App';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
-
+import NotFoundPage from './pages/NotFoundPage';
 // export default () => {
 //   return (
 //     <div>
@@ -12,14 +13,38 @@ import UsersListPage from './pages/UsersListPage';
 //   );
 // };
 
+// export default [
+//   {
+//     ...HomePage,
+//     path: '/',
+//     exact: true
+//   },
+//   {
+//     ...UsersListPage,
+//     path: '/users',
+//   },
+//   {
+//     ...App,
+//     path:''
+//   }
+// ];
+
 export default [
   {
-    ...HomePage,
-    path: '/',
-    exact: true
-  },
-  {
-    ...UsersListPage,
-    path: '/users',
+    ...App, //Doesnt containt path. Therefore, will always displayed on the screen
+    routes: [
+      {
+        ...HomePage,
+        path: '/',
+        exact: true
+      },
+      {
+        ...UsersListPage,
+        path: '/users'
+      },
+      {
+        ...NotFoundPage
+      }
+    ]
   }
 ];
